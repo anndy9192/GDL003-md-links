@@ -1,20 +1,13 @@
-const path = require('path');
+require('./markdown.js')
 
-const isMd = (filePath) => {
+//console.log("Is MD: ", isMd(process.argv[2]))
 
-  if (path.extname(filePath) === '.md') {
+//Funcion para leer el archivo .md
+let fileContent = readFile(process.argv[2])
+//console.log(fileContent)
 
-    return true
-  } else {
+//Funcion para ver los links
+let URLS = getURLs(fileContent);
+//console.log(URLS)
 
-    return false
-  }
-};
-
-
-//export permite que use la logica de otro archivo (asi node sabe que hay mas logica en otros archivos)
-module.exports = {
-  isMd,
-
-}
-
+iterateURLs(URLS)
